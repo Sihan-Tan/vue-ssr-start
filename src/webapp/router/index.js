@@ -1,8 +1,6 @@
 import Vue from 'vue';
 import Router from 'vue-router';
-import HelloWorld from '../components/HelloWorld';
-import Topics from '../components/Topics';
-import Test from '../components/test/Test.vue';
+import Index from '../pages/index';
 
 Vue.use(Router);
 
@@ -12,20 +10,8 @@ export function createRouter() {
         routes: [
             {
                 path: '/',
-                name: 'HelloWorld',
-                component: HelloWorld
-            },
-            {
-                path: '/test',
-                component: Test
-            },
-            {
-                path: '/about',
-                component: r => require(['../components/About'],r)
-            },
-            {
-                path: '/topics',
-                component: Topics
+                name: 'Index',
+                component: Index
             }
         ]
     })

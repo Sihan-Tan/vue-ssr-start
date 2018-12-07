@@ -1,5 +1,5 @@
 const gulp = require('gulp');
-// const watch = require('gulp-watch');
+const watch = require('gulp-watch');
 const babel = require("gulp-babel");
 const rollup = require('gulp-rollup');
 const replace = require('rollup-plugin-replace');
@@ -8,9 +8,9 @@ const plumber = require("gulp-plumber");
 const eslint = require('gulp-eslint');
 // 开发环境
 gulp.task('build-dev', () => {
-    // return watch('src/nodeuii/**/*.js', {
-    //     ignoreInitial: false
-    // }, () => {
+    return watch('src/nodeuii/**/*.js', {
+        ignoreInitial: false
+    }, () => {
     return gulp.src('src/nodeuii/**/*.js')
         .pipe(plumber())
         .pipe(babel({
@@ -25,7 +25,7 @@ gulp.task('build-dev', () => {
         }))
         .pipe(plumber())
         .pipe(gulp.dest('dist'))
-    // })
+    })
 });
 // 上线环境
 gulp.task('build-prod', () => {

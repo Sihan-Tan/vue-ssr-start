@@ -6,9 +6,6 @@ import {
 
 
 @route('/')
-@route('/test')
-@route('/about')
-@route('/topics')
 class IndexController {
     constructor({
         indexService

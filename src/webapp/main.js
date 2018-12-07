@@ -4,6 +4,9 @@ import {
     createRouter
 } from "./router";
 import { createStore} from './vuex/store.js';
+import 'vue-fullpage/vue-fullpage.css';
+import VueFullpage from 'vue-fullpage';
+Vue.use(VueFullpage);
 
 Vue.config.productionTip = false;
 

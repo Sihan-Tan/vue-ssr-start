@@ -31,7 +31,7 @@ let webpackConfig = {
             ]
           }]
     },
-    // watch: !_modeFlag,
+    watch: !_modeFlag,
     watchOptions: {
         ignored: /node_modules/,
         aggregateTimeout: 300,
@@ -50,6 +50,11 @@ let webpackConfig = {
             resolve(__dirname, 'node_modules')
         ],
         extensions: ['.js', '.css', '.vue']
+    },
+    devServer: {
+        contentBase: join(__dirname, 'dist'),
+        compress: true,
+        hot: true
     }
 }
 
