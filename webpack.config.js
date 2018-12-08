@@ -9,10 +9,10 @@ const VueLoaderPlugin = require('vue-loader/lib/plugin')
 
 var _mode = argv.mode || 'development';
 const _modeFlag = _mode === 'production';
-if(argv.env == 'server') {
+if (argv.env == 'server') {
     _mode = 'server';
 }
-console.log('🍎',_mode);
+console.log('🍎', _mode);
 const _mergeConfig = require(`./config/webpack.${_mode}.js`);
 
 let webpackConfig = {
@@ -20,16 +20,16 @@ let webpackConfig = {
         rules: [{
             test: /\.vue$/,
             loader: 'vue-loader'
-        },{
+        }, {
             test: /\.js$/,
             loader: 'babel-loader'
-          },{
+        }, {
             test: /\.css$/,
             use: [
-              'vue-style-loader',
-              'css-loader'
+                'vue-style-loader',
+                'css-loader'
             ]
-          }]
+        }]
     },
     watch: !_modeFlag,
     watchOptions: {
@@ -49,12 +49,17 @@ let webpackConfig = {
         modules: [
             resolve(__dirname, 'node_modules')
         ],
-        extensions: ['.js', '.css', '.vue']
+        extensions: ['.vue', '.js', '.css']
     },
-    devServer: {
-        contentBase: join(__dirname, 'dist'),
-        compress: true,
-        hot: true
+    resolve: {
+        //配置别名，在项目中可缩减引用路径
+        alias: {
+            vue$: 'vue/dist/vue.esm.js',
+            '@': resolve('src/webapp/'),
+            '_c': resolve('src/webapp/components'),
+            'api': resolve('src/webapp/api'),
+            'assets': resolve('src/webapp/assets')
+        }
     }
 }
 

@@ -1,30 +1,34 @@
 const gulp = require('gulp');
 const watch = require('gulp-watch');
 const babel = require("gulp-babel");
+const browserSync = require("browser-sync").create();
+const reload = browserSync.reload;
 const rollup = require('gulp-rollup');
 const replace = require('rollup-plugin-replace');
 const gulpSequence = require('gulp-sequence');
 const plumber = require("gulp-plumber");
 const eslint = require('gulp-eslint');
+
 // 开发环境
 gulp.task('build-dev', () => {
     return watch('src/nodeuii/**/*.js', {
         ignoreInitial: false
     }, () => {
-    return gulp.src('src/nodeuii/**/*.js')
-        .pipe(plumber())
-        .pipe(babel({
-            babelrc: false,
-            plugins: [
-                ["@babel/plugin-proposal-decorators", {
-                    "legacy": true
-                }],
-                "transform-es2015-modules-commonjs"
-            ]
-            // presets: ['@babel/env']
-        }))
-        .pipe(plumber())
-        .pipe(gulp.dest('dist'))
+        reload();
+        return gulp.src('src/nodeuii/**/*.js')
+            .pipe(plumber())
+            .pipe(babel({
+                babelrc: false,
+                plugins: [
+                    ["@babel/plugin-proposal-decorators", {
+                        "legacy": true
+                    }],
+                    "transform-es2015-modules-commonjs"
+                ]
+                // presets: ['@babel/env']
+            }))
+            .pipe(plumber())
+            .pipe(gulp.dest('dist'))
     })
 });
 // 上线环境
@@ -79,4 +83,14 @@ if (process.env.NODE_ENV == 'lint') {
     _task = ['lint']
 }
 
-gulp.task('default', _task)
+gulp.task('default', _task, function () {
+    browserSync.init({
+        server: {
+            baseDir: 'dist'
+        },
+        online: true,
+        snippetOptions: {
+            ignorePaths: ["/", "/**/*.html"]
+        }
+    })
+});
