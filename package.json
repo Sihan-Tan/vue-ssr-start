@@ -8,18 +8,19 @@
     "awilix-koa": "^3.0.0",
     "axios": "^0.18.0",
     "co": "^4.6.0",
-    "hammerjs": "^2.0.8",
+    "fullpage.js": "^3.0.4",
     "koa": "^2.6.2",
     "koa-router": "^7.4.0",
     "koa-static": "^5.0.0",
     "koa-swig": "^2.2.1",
-    "ks-vue-fullpage": "^1.2.8",
     "log4js": "^3.0.6",
-    "velocity-animate": "^1.5.2",
     "vue": "^2.5.17",
+    "vue-fullpage.js": "^0.1.1",
+    "vue-no-ssr": "^1.1.0",
     "vue-router": "^3.0.2",
     "vue-server-renderer": "^2.5.17",
-    "vuex": "^3.0.1"
+    "vuex": "^3.0.1",
+    "vuex-router-sync": "^5.0.0"
   },
   "devDependencies": {
     "@babel/core": "^7.1.6",

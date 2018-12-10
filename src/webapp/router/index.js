@@ -11,7 +11,7 @@ export function createRouter() {
         routes: [
             {
                 path: '/',
-                name: 'Index',
+                name: 'index',
                 component: Index
             }
         ]

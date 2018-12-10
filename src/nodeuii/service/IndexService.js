@@ -3,12 +3,8 @@
  * @fileOverview 实现index的数据模型
  * @author yuanzhijia@yidengxuetang.com
  */
-import {
-    createBundleRenderer
-} from 'vue-server-renderer';
-import {
-    join
-} from 'path';
+import { createBundleRenderer } from 'vue-server-renderer';
+import { join } from 'path';
 const fs = require('fs');
 const LRU = require('lru-cache');
 /**
@@ -60,7 +56,7 @@ class IndexService {
                 }
                 const ssrStream = ssrRenderer.renderToStream(context);
                 ctx.status = 200;
-                ctx.type = 'html';
+                ctx.type = 'text/html; charset=utf-8';
                 ssrStream.on('error', err => reject(err)).pipe(ctx.res);
             })
         }
