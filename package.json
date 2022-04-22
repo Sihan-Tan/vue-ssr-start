@@ -8,7 +8,7 @@
     "awilix-koa": "^3.0.0",
     "axios": "^0.18.0",
     "co": "^4.6.0",
-    "fullpage.js": "^3.0.4",
+    "fullpage.js": "^4.0.5",
     "koa": "^2.6.2",
     "koa-router": "^7.4.0",
     "koa-static": "^5.0.0",
